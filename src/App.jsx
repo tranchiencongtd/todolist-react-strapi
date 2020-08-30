@@ -64,7 +64,12 @@ fetch("http://localhost:1337/todolists", {
         'Content-Type': 'application/json'
      },
     }).catch(err => console.log(err));
+  }
 
+  function handleKeyPress(event)  {
+    if(event.keyCode === 13 || event.which === 13){
+      addItem();
+    }
   }
 
   return (
@@ -78,6 +83,7 @@ fetch("http://localhost:1337/todolists", {
         onChange={(event) => {
           setInput(event.target.value);
         }}
+        onKeyPress={handleKeyPress}
       />
       <button onClick={addItem}>Add</button>
 
